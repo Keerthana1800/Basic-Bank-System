@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
     }
 
  else if($amnt == 0){
-     echo "<script>alert("Invalid Amount")</script>";
+     echo '<script>alert("Invalid Amount")</script>';
 
  }
     else {
@@ -45,7 +45,7 @@ if(isset($_POST['submit']))
         $sql = "INSERT INTO `transaction`(`sender`,`receiver`, `amount`) VALUES ('$sender','$receiver','$amnt')";
         $tns=mysqli_query($conn,$sql);
         if($tns){
-           echo "<script>alert("Transaction Successfull!")</script>";
+           echo '<script>alert("Transaction Successfull!")</script>';
         }
 
         $newCredit= 0;
