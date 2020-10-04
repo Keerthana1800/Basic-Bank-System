@@ -80,7 +80,9 @@
                         <td><a href="transferUser.php?name= <?php echo $rows['Name'] ;?>"> <button type="button" class="button">Transfer</button></a></td>
 
                    </tr>
-
+                  <?php
+                    }
+                        ?>
 
                        </tbody>
                    </table>
