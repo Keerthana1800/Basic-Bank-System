@@ -50,7 +50,7 @@
     <p class="logo-text">Bank of Sparks Foundation</p>
     <ul class="navbar-nav">
     <li class="list-home">
-      <a class="nav-link1" href="index.html">Home</a>
+      <a class="nav-link1" href="index.php">Home</a>
     </li>
   </ul>
     </nav>
