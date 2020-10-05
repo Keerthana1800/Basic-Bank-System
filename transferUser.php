@@ -3,21 +3,21 @@ include_once('config.php') ;
 
 if(isset($_POST['submit']))
 {
-    $from = $_GET['Name'];
+    $from = $_GET['name'];
     $toUser = $_POST['to'];
     $amnt = $_POST['amount'];
 
-    $sql = "SELECT * from customer_table where Name=$from";
+    $sql = "SELECT * from customer_table where name=$from";
     $query = mysqli_query($conn,$sql);
     $sql1 = mysqli_fetch_array($query); // sender account
 
-    $sql = "SELECT * from customer_table where Name=$toUser";
+    $sql = "SELECT * from customer_table where name=$toUser";
     $query = mysqli_query($conn,$sql);
     $sql2 = mysqli_fetch_array($query);
 
 
   // if sender balance is low then insufficient balance
- if($amnt > $sql1['Account Balance'])
+ if($amnt > $sql1['accountbalance'])
     {
 
       echo '<script>alert("Low Balance. Fund Transfer not possible.")</script>';
@@ -30,19 +30,19 @@ if(isset($_POST['submit']))
     else {
 
         //Transferring amount from sender's to receiver's account
-        $newCredit = $sql1['Account Balance'] - $amnt;
-        $sql = "UPDATE customer_table set Account Balance=$newCredit where Name=$from";
+        $newCredit = $sql1['accountbalance'] - $amnt;
+        $sql = "UPDATE customer_table set accountbalance=$newCredit where name=$from";
         mysqli_query($conn,$sql);
 
 
 
-        $newCredit = $sql2['Account Balance'] + $amnt;
-        $sql = "UPDATE customer_table set Account Balance=$newCredit where Name=$toUser";
+        $newCredit = $sql2['accountbalance'] + $amnt;
+        $sql = "UPDATE customer_table set accountbalance=$newCredit where name=$toUser";
         mysqli_query($conn,$sql);
 
-        $sender = $sql1['Name'];
-        $receiver = $sql2['Name'];
-        $sql = "INSERT INTO transaction('Sender','Receiver', 'Amount Transferred') VALUES ('$sender','$receiver','$amnt')";
+        $sender = $sql1['name'];
+        $receiver = $sql2['name'];
+        $sql = "INSERT INTO transaction('sender','receiver', 'amounttransferred') VALUES ('$sender','$receiver','$amnt')";
         $tns=mysqli_query($conn,$sql);
         if($tns){
           echo "<script>alert('Transaction Successfull!');
@@ -100,11 +100,11 @@ if(isset($_POST['submit']))
             <?php
                 global $rows;
                 include_once('config.php') ;
-                if(isset($_GET['Name'])){
+                if(isset($_GET['name'])){
 
 
-                $sname=$_GET['Name'];
-                $sql = "SELECT * FROM  customer_table where Name=$sname";
+                $sname=$_GET['name'];
+                $sql = "SELECT * FROM  customer_table where name=$sname";
                 $query=mysqli_query($conn,$sql);
                 //if(!$query)
                 //{
@@ -117,9 +117,9 @@ if(isset($_POST['submit']))
         <table class="table text-center table-striped table-hover tableStyle">
 
             <tr>
-                <td><?php  echo $rows['Name']; ?></td>
-                <td><?php  echo $rows['Email Id'] ;?></td>
-                <td><?php  echo $rows['Account Balance'];?></td>
+                <td><?php  echo $rows['name']; ?></td>
+                <td><?php  echo $rows['emailid'] ;?></td>
+                <td><?php  echo $rows['accountbalance'];?></td>
             </tr>
 
         </table>
@@ -129,8 +129,8 @@ if(isset($_POST['submit']))
             <option value="" disabled selected> To </option>
             <?php
                 include_once('config.php') ;
-                $sname=$_GET['Name'];
-                $sql = "SELECT * FROM customer_table where Name!=$sname";
+                $sname=$_GET['name'];
+                $sql = "SELECT * FROM customer_table where name!=$sname";
                 $query=mysqli_query($conn,$sql);
                 if(!$query)
                 {
@@ -138,9 +138,9 @@ if(isset($_POST['submit']))
                 }
                 while($rows = mysqli_fetch_array($query)) {
             ?>
-                <option class="table text-center table-striped " value="<?php echo $rows['Name'];?>" >
+                <option class="table text-center table-striped " value="<?php echo $rows['name'];?>" >
 
-                    <?php echo $rows['Name'] ;?>
+                    <?php echo $rows['name'] ;?>
 
                 </option>
             <?php
