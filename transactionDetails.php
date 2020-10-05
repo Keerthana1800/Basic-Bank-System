@@ -64,9 +64,9 @@
                 ?>
             <tr>
 
-            <td><?php echo $rows['Sender']; ?></td>
-            <td><?php echo $rows['Receiver']; ?></td>
-            <td><?php echo $rows['Amount Transferred']; ?> </td>
+            <td><?php echo $rows['sender']; ?></td>
+            <td><?php echo $rows['receiver']; ?></td>
+            <td><?php echo $rows['amounttransferred']; ?> </td>
 
             <?php
             }
