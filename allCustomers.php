@@ -74,10 +74,10 @@
                ?>
 
                        <tr>
-                       <td><?php echo $rows['Name']?></td>
-                       <td><?php echo $rows['Email Id']?></td>
-                       <td><?php echo $rows['Account Balance']?></td>
-                        <td><a href="transferUser.php?name= <?php echo $rows['Name'] ;?>"> <button type="button" class="button">Transfer</button></a></td>
+                       <td><?php echo $rows['name']?></td>
+                       <td><?php echo $rows['emailid']?></td>
+                       <td><?php echo $rows['accountbalance']?></td>
+                        <td><a href="transferUser.php?name= <?php echo $rows['name'] ;?>"> <button type="button" class="button">Transfer</button></a></td>
 
                    </tr>
                    <?php
