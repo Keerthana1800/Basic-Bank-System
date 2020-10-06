@@ -1,5 +1,5 @@
 <?php
-/* Database username 'bank' password '1234' */
+/* Database username 'root' password '' */
 
 $servername= 'localhost';
 $user ='root';
