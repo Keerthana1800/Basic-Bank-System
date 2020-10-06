@@ -1,15 +1,15 @@
 <?php
 /* Database username 'bank' password '1234' */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'bank');
-define('DB_PASSWORD', '1234');
-define('DB_NAME', 'customer');
 
+$servername= 'localhost';
+$user ='root';
+$pass = '';
+$dbname= 'customer';
 /* Attempt to connect to MySQL database */
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$conn = mysqli_connect($servername, $user, $pass, $dbname);
 
 // Check connection
-if($conn === false){
+if(!$conn){
     die("ERROR: Sorry, Couldn't connect. " . mysqli_connect_error());
 }
 ?>
